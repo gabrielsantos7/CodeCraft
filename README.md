@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Evento NLW Connect - Plataforma de inscrição e indicação de eventos
 
-## Getting Started
+Este projeto foi desenvolvido durante o evento **NLW Connect** da Rocketseat e consiste em uma plataforma para inscrição e indicação de eventos. Os usuários podem se inscrever e compartilhar um link de convite com amigos. Cada vez que alguém acessa o evento pelo link de um usuário, ele sobe no ranking. Os participantes com mais acessos são exibidos em um pódio!
 
-First, run the development server:
+## 🛠️ Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Para o desenvolvimento da aplicação, foram utilizadas as seguintes tecnologias:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Next.js e React** - Para renderização do lado do cliente e servidor.
+* **TailwindCSS V4 e Lucide-React** - Para estilização e responsividade, além de ícones.
+* **React Hook Form e Zod** - Para validação de formulários.
+* **Orval** - Para geração automática de requisições HTTP tipadas.
+* **Biome** - Para formatação e padronização do código.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🖥️ Instalação e Execução Local
 
-## Learn More
+### 🔹 Requisitos
 
-To learn more about Next.js, take a look at the following resources:
+Certifique-se de ter instalado:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Node.js**
+* **NPM**
+* **Backend da aplicação** rodando localmente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏆 Como Funciona o Ranking?
 
-## Deploy on Vercel
+* Cada usuário inscrito recebe um **link de convite único**.
+* Quando amigos acessam o evento pelo link do usuário, ele ganha pontos.
+* Os usuários com mais acessos aparecem no **pódio**!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feito com 💜 durante o NLW Connect da Rocketseat! 🚀
