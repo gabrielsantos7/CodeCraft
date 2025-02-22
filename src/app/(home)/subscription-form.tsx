@@ -1,29 +1,38 @@
-'use client'
+'use client';
 
-import { Button } from '@/components/button'
-import { InputField, InputIcon, InputRoot } from '@/components/input'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowRight, Mail, User } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { Button } from '@/components/button';
+import { InputField, InputIcon, InputRoot } from '@/components/input';
+import { subscribeToEvent } from '@/http/api';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowRight, Mail, User } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 const subscriptionSchema = z.object({
   name: z.string().min(2, 'Informe seu nome completo'),
   email: z.string().email('Informe um e-mail válido'),
-})
+});
 
-type SubscriptionSchema = z.infer<typeof subscriptionSchema>
+type SubscriptionSchema = z.infer<typeof subscriptionSchema>;
 
 export function SubscriptionForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SubscriptionSchema>({
     resolver: zodResolver(subscriptionSchema),
-  })
-  function onSubscribe(data: SubscriptionSchema) {
-    console.log(data)
+  });
+  async function onSubscribe({ name, email }: SubscriptionSchema) {
+    const referrer = searchParams.get('referrer');
+    const {
+      data: { subscriberId },
+    } = await subscribeToEvent({ name, email, referrer });
+
+    router.push(`/invite/${subscriberId}`);
   }
 
   return (
@@ -49,7 +58,9 @@ export function SubscriptionForm() {
           </InputRoot>
 
           {errors.name && (
-            <p className="text-danger font-semibold text-xs">{errors.name.message}</p>
+            <p className="text-danger font-semibold text-xs">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
@@ -66,7 +77,9 @@ export function SubscriptionForm() {
           </InputRoot>
 
           {errors.email && (
-            <p className="text-danger font-semibold text-xs">{errors.email.message}</p>
+            <p className="text-danger font-semibold text-xs">
+              {errors.email.message}
+            </p>
           )}
         </div>
       </div>
@@ -76,5 +89,5 @@ export function SubscriptionForm() {
         <ArrowRight />
       </Button>
     </form>
-  )
+  );
 }

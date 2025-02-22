@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { IconButton } from '@/components/icon-button'
-import { InputField, InputIcon, InputRoot } from '@/components/input'
-import { Copy, Link } from 'lucide-react'
+import { IconButton } from '@/components/icon-button';
+import { InputField, InputIcon, InputRoot } from '@/components/input';
+import { Copy, Link } from 'lucide-react';
 
 interface InviteLinkInputProps {
-  inviteLink: string
+  inviteLink: string;
 }
 
 export function InviteLinkInput({ inviteLink }: InviteLinkInputProps) {
   function copyInviteLink() {
-    navigator.clipboard.writeText(inviteLink)
+    navigator.clipboard.writeText(inviteLink);
   }
 
   return (
@@ -25,5 +25,5 @@ export function InviteLinkInput({ inviteLink }: InviteLinkInputProps) {
         <Copy className="size-5" />
       </IconButton>
     </InputRoot>
-  )
+  );
 }
